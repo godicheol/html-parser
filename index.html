@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html-parser</title>
+    <style>
+        .line{margin: 1rem 0; border-bottom: 1px solid;}
+        pre{font-size: 12px;}
+    </style>
+</head>
+
+<body>
+    <h1>html-parser</h1>
+
+    <div class="line"></div>
+
+    <h3>Table element</h3>
+
+    <table id="table-1" class="table-1" data-src="text-data-src">
+        <tbody>
+            <td id="1">1</td>
+            <td id="2">2</td>
+            <td id="3">3</td>
+            <td id="4">4</td>
+            <td id="5">5</td>
+            <td id="6">6</td>
+        </tbody>
+    </table>
+
+    <div class="line"></div>
+
+    <h3>Parsed table element</h3>
+
+    <pre id="result-1"></pre>
+
+    <div class="line"></div>
+
+    <h3>Get</h3>
+
+    <pre id="result-2"></pre>
+
+    <div class="line"></div>
+
+    <h3>Result</h3>
+
+    <pre id="result-3"></pre>
+    
+
+    <script src="dist/html-parser.js"></script>
+    <script>
+        var elem = document.getElementById("table-1");
+        var arr = htmlParser.parse(elem);
+        var arr2 = htmlParser.get(arr, "attributes.id");
+
+        document.getElementById("result-1").innerHTML = JSON.stringify(arr, null, 2);
+        document.getElementById("result-2").innerHTML = 'htmlParser.get(dataArray, "attributes.id");';
+        document.getElementById("result-3").innerHTML = JSON.stringify(arr2, null, 2);
+    </script>
+</body>
+
+</html>
